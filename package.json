@@ -1,0 +1,26 @@
+{
+  "name": "mi-appi-lz",
+  "version": "1.0.0",
+  "description": "TikTok TTS application with Vercel Web Analytics",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "tiktok",
+    "tts",
+    "express",
+    "vercel"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "@vercel/analytics": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
