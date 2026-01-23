@@ -1,0 +1,18 @@
+{
+  "name": "mi-appi-lz",
+  "version": "1.0.0",
+  "description": "TikTok Text-to-Speech with Vercel Web Analytics",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tiktok",
+    "tts",
+    "text-to-speech",
+    "vercel",
+    "analytics"
+  ],
+  "author": "",
+  "license": "MIT"
+}

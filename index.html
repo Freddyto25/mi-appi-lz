@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Text-to-Speech</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+        textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        button {
+            background-color: #0070f3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0051cc;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #charcount {
+            float: right;
+            font-size: 12px;
+            color: #666;
+        }
+        #error, #success {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        #error {
+            background-color: #fee;
+            border: 1px solid #fcc;
+            color: #c00;
+        }
+        #success {
+            background-color: #efe;
+            border: 1px solid #cfc;
+            color: #060;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🔊 TikTok Text-to-Speech</h1>
+        
+        <div id="error">
+            <strong>Error:</strong>
+            <span id="errortext">There was an error.</span>
+        </div>
+
+        <label for="text">
+            Enter text to convert:
+            <span id="charcount">0/300</span>
+        </label>
+        <textarea id="text" placeholder="Type your text here..." oninput="onTextareaInput()" disabled></textarea>
+
+        <label for="voice">Select voice:</label>
+        <select id="voice" disabled>
+            <option value="none">-- Select a voice --</option>
+            <option value="en_us_001">English US - Female</option>
+            <option value="en_us_002">English US - Male</option>
+            <option value="en_us_006">English US - Male 2</option>
+            <option value="en_us_007">English US - Female 2</option>
+            <option value="en_us_009">English US - Male 3</option>
+            <option value="en_us_010">English US - Male 4</option>
+            <option value="en_uk_001">English UK - Male</option>
+            <option value="en_uk_003">English UK - Male 2</option>
+            <option value="en_au_001">English AU - Female</option>
+            <option value="en_au_002">English AU - Male</option>
+            <option value="fr_001">French - Male</option>
+            <option value="fr_002">French - Female</option>
+            <option value="de_001">German - Female</option>
+            <option value="de_002">German - Male</option>
+            <option value="es_002">Spanish - Male</option>
+            <option value="es_mx_002">Spanish MX - Male</option>
+            <option value="br_001">Portuguese BR - Female</option>
+            <option value="br_003">Portuguese BR - Female 2</option>
+            <option value="br_004">Portuguese BR - Male</option>
+            <option value="br_005">Portuguese BR - Male 2</option>
+            <option value="id_001">Indonesian - Female</option>
+            <option value="jp_001">Japanese - Female</option>
+            <option value="jp_003">Japanese - Female 2</option>
+            <option value="jp_005">Japanese - Female 3</option>
+            <option value="jp_006">Japanese - Male</option>
+            <option value="kr_002">Korean - Male</option>
+            <option value="kr_003">Korean - Female</option>
+            <option value="kr_004">Korean - Male 2</option>
+        </select>
+
+        <button id="submit" onclick="submitForm()" disabled>Generate Speech</button>
+
+        <div id="success">
+            <strong>Success!</strong> Generated audio for: <span id="generatedtext"></span>
+            <audio id="audio" controls></audio>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
